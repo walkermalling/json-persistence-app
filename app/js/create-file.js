@@ -1,15 +1,13 @@
 var fs = require('fs');
-var checkfile = require('./check-file');
+var fileExists = require('./check-file');
 var dbdir = './db';
 
-module.exports = function(filename, data){
+module.exports = function(filename, fileContents){
   // check if file already exists
-  if( checkfile(filename) ) return {"msg":"file already exists"};
+  if( fileExists(filename) ) throw "FileAlreadyExists";
 
   // create file
-  var newfile = fs.createWriteStream( dbdir+'/'+filename, { encoding: 'utf8' });
+  fs.writeFileSync( dbdir + '/' + filename , JSON.stringify(fileContents));
 
-  // write data to file
-  newfile.write(data);
-  newfile.end();
+  return true;
 };

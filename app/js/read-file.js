@@ -12,7 +12,7 @@ module.exports = function(filename){
   // read file
   var filepath = dbdir + '/' + filename;
   var data = JSON.parse(fs.readFileSync( filepath, {encoding:'utf8'}));
-  
+
   // return
   return data;
 

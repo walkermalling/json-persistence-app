@@ -25,7 +25,7 @@ describe('Read File', function() {
 
   it('returns true if file exists', function(done) {
     chai.request('http://localhost:3000')
-      .get('/api/v_0_0_1/filedb/test.json'  )
+      .get('/api/v_0_0_1/filedb/test.json')
       .res(function(res) {
         expect(res).to.have.status(200);
         expect(res.body).to.have.property('msg');

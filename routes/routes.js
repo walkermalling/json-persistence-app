@@ -16,9 +16,13 @@ module.exports = function(app) {
 
   // create a file
   app.post(baseUrl + '/:filename', function(req, res) {
-    createfile(process.params.filename);
+
+    var contents = req.body;
+    createfile(req.params.filename, contents);
+
     var data = readfile(req.params.filename);
-    res.status(200).json(data);
+    res.status(200).send(data);
+
   });
 
   // 404
